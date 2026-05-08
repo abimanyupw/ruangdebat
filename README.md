@@ -27,3 +27,19 @@
    ```bash
    git clone https://github.com/username-anda/ruang-debat.git
    cd ruang-debat
+
+
+
+## Dokumentasi
+
+- **Pilih Sesi Debat Yang Diinginkan**
+  <img width="948" height="463" alt="Screenshot 2026-05-08 122709" src="https://github.com/user-attachments/assets/9be57a36-10f0-47d5-a0eb-58f365c734cb" />
+- **Mulai Debat Sesuai Topik**
+  <img width="955" height="499" alt="Screenshot 2026-05-08 123250" src="https://github.com/user-attachments/assets/e69fe72b-dcae-4764-b04f-5d54ddfe49da" />
+- **Saat Sesi Terpenuhi Klik "Minta Penilaian Untuk Melihat Skor"
+  <img width="947" height="476" alt="Screenshot 2026-05-08 123801" src="https://github.com/user-attachments/assets/ec9ad266-3025-4815-a362-182de681dee6" />
+- **Skor Muncul**
+  <img width="947" height="469" alt="Screenshot 2026-05-08 123826" src="https://github.com/user-attachments/assets/4682ee56-13ec-4a55-9242-fbb1689d9294" />
+
+ 
+
