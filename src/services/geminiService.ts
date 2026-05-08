@@ -4,7 +4,9 @@ import { Message } from "../types";
 const apiKey = process.env.GEMINI_API_KEY || "";
 
 if (!apiKey) {
-  console.error("CRITICAL: GEMINI_API_KEY is missing. Please set it in Vercel Environment Variables.");
+  console.error(
+    "CRITICAL: GEMINI_API_KEY is missing. Please set it in Vercel Environment Variables.",
+  );
 }
 
 const ai = new GoogleGenAI({ apiKey });
@@ -46,9 +48,9 @@ PENTING: Berikan kritik yang jujur namun membangun. Fokus pada bagaimana user bi
 `;
 
 export async function getDebateResponse(history: Message[]) {
-  const contents = history.map(m => ({
-    role: m.role === 'user' ? 'user' : 'model',
-    parts: [{ text: m.text }]
+  const contents = history.map((m) => ({
+    role: m.role === "user" ? "user" : "model",
+    parts: [{ text: m.text }],
   }));
 
   const response = await ai.models.generateContent({
@@ -60,13 +62,16 @@ export async function getDebateResponse(history: Message[]) {
     },
   });
 
-  return response.text?.replace('[LAWAN]: ', '').trim() || "Maaf, saya tidak bisa merespons argumen Anda saat ini.";
+  return (
+    response.text?.replace("[LAWAN]: ", "").trim() ||
+    "Maaf, saya tidak bisa merespons argumen Anda saat ini."
+  );
 }
 
 export async function getJudgeResult(history: Message[]) {
   const conversationText = history
-    .map(m => `${m.role === 'user' ? 'User' : 'AI'}: ${m.text}`)
-    .join('\n');
+    .map((m) => `${m.role === "user" ? "User" : "AI"}: ${m.text}`)
+    .join("\n");
 
   const response = await ai.models.generateContent({
     model: "gemini-3-flash-preview",
@@ -86,13 +91,19 @@ export async function getJudgeResult(history: Message[]) {
 }
 
 export async function generateTopic() {
+  // Menambahkan timestamp agar AI memberikan respon yang berbeda setiap kali dipanggil
+  const seed = Date.now();
   const response = await ai.models.generateContent({
     model: "gemini-3-flash-preview",
-    contents: "Berikan satu topik debat yang sangat spesifik, kontroversial, dan acak dalam Bahasa Indonesia. Pilih dari kategori yang berbeda setiap kali (seperti: Bioetika, Keamanan Siber, Kebijakan Publik, Hubungan Manusia, atau Teknologi Masa Depan). Berikan HANYA judul topiknya saja tanpa tanda kutip.",
+    contents: `Berikan satu topik debat yang sangat spesifik, kontroversial, dan benar-benar baru dalam Bahasa Indonesia. Pilih dari kategori acak. Seed unik: ${seed}. Berikan HANYA judul topiknya saja tanpa tanda kutip.`,
     config: {
-      systemInstruction: "Kamu adalah moderator debat profesional yang ingin menantang logika manusia dengan topik-topik unik.",
-    }
+      systemInstruction:
+        "Kamu adalah moderator debat profesional yang ingin menantang logika manusia dengan topik-topik unik dan tidak terduga.",
+    },
   });
 
-  return response.text?.trim() || "Efektivitas sistem demokrasi digital dalam menggantikan birokrasi tradisional";
+  return (
+    response.text?.trim() ||
+    "Efektivitas sistem demokrasi digital dalam menggantikan birokrasi tradisional"
+  );
 }
