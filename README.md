@@ -44,6 +44,11 @@ Buat file .env di root folder dan masukkan API Key Gemini Anda:
   npm run dev
   ```
 
+📝 Catatan Penting
+Aplikasi ini menggunakan Free Tier Gemini API yang memiliki limitasi kuota (misal: 20 request per hari). Jika limit tercapai, aplikasi akan menampilkan pesan error yang ramah pengguna.
+🤝 Kontribusi
+Kontribusi selalu terbuka! Silakan buka Issue atau kirimkan Pull Request.
+
 
 ## Dokumentasi
 
