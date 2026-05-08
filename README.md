@@ -27,7 +27,22 @@
    ```bash
    git clone https://github.com/username-anda/ruang-debat.git
    cd ruang-debat
+   ```
 
+1. **Install Dependencies**
+  ```bash
+   npm install
+  ```
+
+2. **Konfigurasi Environment Variable:**
+Buat file .env di root folder dan masukkan API Key Gemini Anda:
+  ```bash
+  VITE_GEMINI_API_KEY=your_api_key_here
+  ```
+3. **Jalankan aplikasi**
+  ```bash
+  npm run dev
+  ```
 
 
 ## Dokumentasi
